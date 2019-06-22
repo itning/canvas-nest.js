@@ -1,29 +1,44 @@
 # canvas-nest.js
 
-> A nest backgroud of website draw on canvas. [中文Readme帮助文档](https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md). For `wordpress plugin`, search `canvas-nest` or see [canvas-nest-for-wp](https://github.com/aTool-org/canvas-nest-for-wp).
+> A nest background of website draw on canvas. [中文 Readme 帮助文档](README-zh.md).
 
-![travis-ci](https://travis-ci.org/hustcc/canvas-nest.js.svg?branch=master) ![npm](https://img.shields.io/npm/v/canvas-nest.js.svg?style=flat-square) ![npm](https://img.shields.io/npm/l/canvas-nest.js.svg?style=flat-square)
+[![npm](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://git.hust.cc/canvas-nest.js)
+[![npm](https://img.shields.io/npm/v/canvas-nest.js.svg)](https://www.npmjs.com/package/canvas-nest.js)
+[![npm](https://img.shields.io/npm/dm/canvas-nest.js.svg)](https://www.npmjs.com/package/canvas-nest.js)
+[![gzip](http://img.badgesize.io/https://unpkg.com/canvas-nest.js/dist/canvas-nest.js?compression=gzip)](https://unpkg.com/canvas-nest.js/dist/canvas-nest.js)
+
+![screenshot](/screenshot.png)
+
+## Feature
+
+ - It does not depend on jQuery and original javascrpit is used.
+ - Small size, only 2 Kb.
+ - Easy to implement, simple configuration.
+ - You do not have to be a web developer to use it.
+ - Modularized with area rendering.
 
 
+## Install
+```sh
+# use npm
+npm install --save canvas-nest.js
 
-## feature
-
- - do not depend on jQuery or other javascript framework.
- - very light, only 1.6 kb. can be smaller after gzip.
- - so easy to use, even you are not a web developer.
-
-
-## usage
-
-so eazy that I do not want write the chapter.
-
-insert the code below `between <body> and </body>`.
-
-```html
-<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+# or use yarn
+yarn add canvas-nest.js
 ```
 
-suggest before the tag `</body>`. like below:
+
+## Usage
+
+ - Script tag
+
+Insert the code below `between <body> and </body>`.
+
+```html
+<script src="dist/canvas-nest.js"></script>
+```
+
+Strongly suggest to insert before the tag `</body>`, as the following:
 
 ```html
 <html>
@@ -33,47 +48,79 @@ suggest before the tag `</body>`. like below:
 <body>
 	...
 	...
-	...
-	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+	<script src="dist/canvas-nest.js"></script>
 </body>
 </html>
 ```
 
-
-`please do not add the code in the <head> </head>`.
-
-then ok!
+Then ok! `Please do not add the code in the <head> </head>`.
 
 
-## config
+ - Modular usage (Area render)
 
- - **`color`**: the canvas line color, default: `'0,0,0'` ; the color is (R,G,B)
- - **`opacity`**: the opacity of line (0~1), default: `0.5`
- - **`count`**: the number of lines, default: `150`
- - **`zIndex`**: the index of z space, default: `-1`
+After installation, you can import this as module.
+
+There is only one API, use it as below:
+
+```js
+import CanvasNest from 'canvas-nest.js';
+
+const config = {
+  color: '255,0,0',
+  count: 88,
+};
+
+// Using config rendering effect at 'element'.
+const cn = new CanvasNest(element, config);
+
+// destroy
+cn.destroy();
+```
+
+
+## Configuration
+
+ - **`color`**: color of lines, default: `'0,0,0'`; RGB values: (R,G,B).(note: use ',' to separate.)
+ - **`pointColor`**: color of points, default: `'0,0,0'`; RGB values: (R,G,B).(note: use ',' to separate.)
+ - **`opacity`**: the opacity of line (0~1), default: `0.5`.
+ - **`count`**: the number of lines, default: `99`.
+ - **`zIndex`**: z-index property of the background, default: `-1`.
 
 Example:
 
+ - Script tag
+
 ```html
-<script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="dist/canvas-nest.js"></script>
 ```
 
-set the config on the script node `as a attribute`. all the config has the default value, you can choose to set any of them.
+ - Modular usage (Area render)
+
+```js
+{
+  color: '0,0,255',
+  opacity: 0.7,
+  zIndex: -2,
+  count: 99,
+};
+```
+
+**Note: If the Configuration isn't customized, default values are available as well.**
 
 
-## preview
+## Related projects
 
-1. [OnlineTool: http://www.atool.org/](http://www.atool.org/)
-2. [aiBQ: https://aibq.cn/](https://aibq.cn/)
-3. [Jerey's Blog: http://jerey.cn/](http://jerey.cn/)
+ - [canvas-nest-for-wp](https://github.com/aTool-org/canvas-nest-for-wp): a wordpress plugin, search `canvas-nest` in wordpress store.
+ - [vue-canvas-nest](https://github.com/ZYSzys/vue-canvas-nest): vue component wrapper.
+ - [react-canvas-nest](https://github.com/flyerH/react-canvas-nest): react component wrapper.
+ - [canvas-nest-for-vscode](https://github.com/AShujiao/vscode-nest): a vscode extensions, search `nest` in vscode extensions.
 
-if you has used this project, pls let me know, I can add your website on.
+## Used by
 
-![screenshot](https://raw.githubusercontent.com/hustcc/canvas-nest.js/master/screenshot.png)
+ - [A Tool](https://atool.vip): a convenient tool box.
 
 
-## other
 
-Project library cdn url: [http://www.bootcdn.cn/canvas-nest.js/](http://www.bootcdn.cn/canvas-nest.js/).
+## License
 
-any bug or question, welcome to push request and issue.
+MIT@[hustcc](https://github.com/hustcc).
